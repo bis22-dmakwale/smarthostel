@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Building2, Check, LockKeyhole, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Check, LockKeyhole, ShieldCheck } from "lucide-react";
 import { login, homeFor } from "@/lib/auth";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
@@ -30,14 +31,14 @@ export default function LoginPage() {
   return (
     <main className="login-page">
       <section className="login-brand-panel">
-        <div className="brand">
-          <span className="brand-mark"><Building2 size={21} strokeWidth={1.8} /></span>
-          <div>
-            <div className="brand-name">MUBAS Hostels</div>
-            <div className="brand-caption">Residence services</div>
+        <div className="login-brand-top">
+          <Image className="login-logo" src="/logo-white.png" alt="MUBAS crest" width={132} height={132} priority />
+          <div className="login-brand-name">
+            <span>Malawi University of</span>
+            <strong>Business and Applied Sciences</strong>
           </div>
         </div>
-        <div>
+        <div className="login-brand-content">
           <div className="login-panel-eyebrow">A better residence experience</div>
           <h1 className="login-panel-heading">Your campus life,<br />made simpler.</h1>
           <p className="login-panel-copy">One secure place to manage your accommodation, stay informed, and connect with your hostel office.</p>
@@ -48,18 +49,10 @@ export default function LoginPage() {
           </div>
         </div>
         <div className="login-brand-footer"><ShieldCheck size={15} /> Secure portal for MUBAS residents</div>
-        <div className="login-illustration" aria-hidden="true"><Building2 size={300} strokeWidth={.55} /></div>
       </section>
 
       <section className="login-form-panel">
         <div className="login-form-wrap">
-          <div className="login-mobile-brand">
-            <span className="brand-mark"><Building2 size={20} /></span>
-            <div>
-              <div className="brand-name">MUBAS Hostels</div>
-              <div className="brand-caption">Residence services</div>
-            </div>
-          </div>
           <div className="login-heading">Welcome back</div>
           <p className="login-description">Sign in with the account details issued by your hostel office.</p>
           <form onSubmit={submit} className="login-form">
@@ -87,6 +80,10 @@ export default function LoginPage() {
           <div className="login-footer">MUBAS · Malawi University of Business and Applied Sciences</div>
         </div>
       </section>
+      <div className="login-mobile-brand">
+        <Image src="/logo-white.png" alt="MUBAS crest" width={64} height={64} priority />
+        <span>MUBAS Smart Hostels</span>
+      </div>
     </main>
   );
 }
